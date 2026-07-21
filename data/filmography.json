@@ -1,0 +1,137 @@
+{
+  "films": [
+    {
+      "id": "the-last-frame",
+      "title": "The Last Frame",
+      "year": 2024,
+      "type": "feature",
+      "runtime": "2h 14m",
+      "rating": "R",
+      "aspectRatio": "2.39:1",
+      "poster": "/assets/images/film-1.jpg",
+      "trailer": "/assets/videos/film-1-trailer.mp4",
+      "synopsis": "In the twilight of his career, legendary cinematographer Marcus Reid faces a choice that will define his legacy. When a young filmmaker offers him one final project — a deeply personal story about memory and loss — Marcus must confront the ghosts of his past while crafting what may be his last frame.",
+      "director": "Alexander Noir",
+      "writer": "Elena Voss",
+      "cinematographer": "James Chen",
+      "composer": "Ludovico Einaudi",
+      "editor": "Sarah Mitchell",
+      "producer": "A24",
+      "cast": ["Michael Fassbender", "Saoirse Ronan"],
+      "awards": [
+        { "festival": "Cannes Film Festival", "award": "Palme d'Or Nomination", "year": 2024 },
+        { "festival": "Venice Film Festival", "award": "Golden Lion - Best Director", "year": 2024 },
+        { "festival": "Academy Awards", "award": "Best Picture, Best Director, Best Cinematography", "year": 2024 }
+      ]
+    },
+    {
+      "id": "echoes-in-silence",
+      "title": "Echoes in Silence",
+      "year": 2023,
+      "type": "short",
+      "runtime": "22m",
+      "rating": "PG-13",
+      "aspectRatio": "1.85:1",
+      "poster": "/assets/images/film-2.jpg",
+      "trailer": "/assets/videos/film-2-trailer.mp4",
+      "synopsis": "A mute pianist discovers that the silence between notes holds more truth than any melody. A meditation on the spaces between sounds and the stories told without words.",
+      "director": "Alexander Noir",
+      "writer": "Alexander Noir",
+      "cinematographer": "James Chen",
+      "composer": "Hildur Guðnadóttir",
+      "editor": "Sarah Mitchell",
+      "producer": "Plan B Entertainment",
+      "cast": ["Florence Pugh"],
+      "awards": [
+        { "festival": "Sundance Film Festival", "award": "Best Short Film", "year": 2023 }
+      ]
+    },
+    {
+      "id": "beneath-the-surface",
+      "title": "Beneath the Surface",
+      "year": 2023,
+      "type": "documentary",
+      "runtime": "1h 48m",
+      "rating": "PG",
+      "aspectRatio": "16:9",
+      "poster": "/assets/images/film-3.jpg",
+      "trailer": "/assets/videos/film-3-trailer.mp4",
+      "synopsis": "Diving deep into the world of competitive freediving, this documentary follows three athletes as they push the limits of human endurance in the most dangerous sport on earth.",
+      "director": "Alexander Noir",
+      "writer": "Maria Santos",
+      "cinematographer": "Hoyte van Hoytema",
+      "composer": "Jóhann Jóhannsson",
+      "editor": "Joe Walker",
+      "producer": "A24",
+      "cast": [],
+      "awards": [
+        { "festival": "Tribeca Film Festival", "award": "Best Documentary Feature", "year": 2023 }
+      ]
+    },
+    {
+      "id": "whispers-of-the-forgotten",
+      "title": "Whispers of the Forgotten",
+      "year": 2022,
+      "type": "feature",
+      "runtime": "2h 1m",
+      "rating": "R",
+      "aspectRatio": "2.39:1",
+      "poster": "/assets/images/film-4.jpg",
+      "trailer": "/assets/videos/film-4-trailer.mp4",
+      "synopsis": "A ghost story set in post-war Europe, where a young woman returns to her family estate to find it haunted not by spirits, but by the memories of those who never came home.",
+      "director": "Alexander Noir",
+      "writer": "Elena Voss",
+      "cinematographer": "Bradford Young",
+      "composer": "Mica Levi",
+      "editor": "Affonso Gonçalves",
+      "producer": "Focus Features",
+      "cast": ["Anya Taylor-Joy", "Oscar Isaac"],
+      "awards": [
+        { "festival": "Venice Film Festival", "award": "Horizons Award for Best Director", "year": 2022 },
+        { "festival": "Berlin International Film Festival", "award": "Silver Bear - Best Director", "year": 2022 }
+      ]
+    },
+    {
+      "id": "nike-beyond-limits",
+      "title": "Nike — Beyond Limits",
+      "year": 2022,
+      "type": "commercial",
+      "runtime": "1m 30s",
+      "rating": "N/A",
+      "aspectRatio": "2.39:1",
+      "poster": "/assets/images/film-5.jpg",
+      "trailer": "/assets/videos/film-5-trailer.mp4",
+      "synopsis": "A 90-second anthem celebrating the human spirit, featuring athletes from around the world pushing beyond their limits.",
+      "director": "Alexander Noir",
+      "writer": "Wieden+Kennedy",
+      "cinematographer": "Linus Sandgren",
+      "composer": "Trent Reznor",
+      "editor": "Alexander Noir",
+      "producer": "Nike",
+      "cast": [],
+      "awards": []
+    },
+    {
+      "id": "aurora-into-the-light",
+      "title": "Aurora — Into the Light",
+      "year": 2021,
+      "type": "music-video",
+      "runtime": "4m 32s",
+      "rating": "N/A",
+      "aspectRatio": "16:9",
+      "poster": "/assets/images/film-6.jpg",
+      "trailer": "/assets/videos/film-6-trailer.mp4",
+      "synopsis": "A visual journey through the Norwegian fjords, following singer Aurora as she performs her ethereal anthem in breathtaking natural landscapes.",
+      "director": "Alexander Noir",
+      "writer": "N/A",
+      "cinematographer": "Hoyte van Hoytema",
+      "composer": "Aurora",
+      "editor": "Alexander Noir",
+      "producer": "Decca Records",
+      "cast": ["Aurora"],
+      "awards": [
+        { "festival": "UK Music Video Awards", "award": "Best Pop Video - International", "year": 2021 }
+      ]
+    }
+  ]
+}

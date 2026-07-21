@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journal — Alexander Noir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/journal.css">
+</head>
+<body class="is-loading">
+  <div class="cursor" id="cursor">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+    <div class="cursor__label">VIEW</div>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="/" class="nav__logo"><span class="nav__logo-text">Small Town studio</span></a>
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+      <span class="nav__toggle-line"></span>
+      <span class="nav__toggle-line"></span>
+    </button>
+  </header>
+
+  <div class="menu" id="menu">
+    <video class="menu__bg" muted loop playsinline>
+      <source src="/assets/videos/menu-bg.mp4" type="video/mp4">
+    </video>
+    <nav class="menu__nav">
+      <a href="/" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">01</span><span class="menu__link-text">Home</span></a>
+      <a href="/pages/about.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">02</span><span class="menu__link-text">About</span></a>
+      <a href="/pages/filmography.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">03</span><span class="menu__link-text">Filmography</span></a>
+      <a href="/pages/journal.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">04</span><span class="menu__link-text">Journal</span></a>
+      <a href="/pages/contact.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">05</span><span class="menu__link-text">Contact</span></a>
+    </nav>
+    <div class="menu__footer">
+      <div class="menu__footer-col">
+        <p class="menu__footer-label">Inquiries</p>
+        <a href="mailto:hello@smalltimestudio.com" class="menu__footer-link">hello@smalltimestudio.com</a>
+      </div>
+      <div class="menu__footer-col">
+        <p class="menu__footer-label">Social</p>
+        <div class="menu__footer-socials">
+          <a href="#" class="menu__footer-link">Instagram</a>
+          <a href="#" class="menu__footer-link">Vimeo</a>
+          <a href="#" class="menu__footer-link">Letterboxd</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- Header -->
+    <section class="journal-header">
+      <span class="section-label">Journal</span>
+      <h1 class="journal-title" data-split="chars">Visual Essays</h1>
+      <p class="journal-subtitle">Reflections on cinema, craft, and the art of seeing.</p>
+    </section>
+
+    <!-- Filter -->
+    <section class="journal-filter">
+      <div class="tags">
+        <button class="tag is-active" data-filter="all">All</button>
+        <button class="tag" data-filter="essay">Essays</button>
+        <button class="tag" data-filter="behind-the-scenes">Behind the Scenes</button>
+        <button class="tag" data-filter="interview">Interviews</button>
+        <button class="tag" data-filter="announcement">Announcements</button>
+      </div>
+    </section>
+
+    <!-- Journal Grid -->
+    <section class="journal-grid">
+      <article class="journal-card" data-type="essay" data-cursor="OPEN">
+        <a href="#" class="journal-card__link">
+          <div class="journal-card__image">
+            <img src="/assets/images/journal-1.jpg" alt="The Language of Shadows" loading="lazy">
+          </div>
+          <div class="journal-card__content">
+            <span class="journal-card__category">Essay</span>
+            <span class="journal-card__date">December 15, 2024</span>
+            <h2 class="journal-card__title">The Language of Shadows</h2>
+            <p class="journal-card__excerpt">How chiaroscuro lighting became the emotional backbone of "The Last Frame" and why darkness tells more than light.</p>
+            <span class="journal-card__read-more">Read Article →</span>
+          </div>
+        </a>
+      </article>
+      <article class="journal-card" data-type="behind-the-scenes" data-cursor="OPEN">
+        <a href="#" class="journal-card__link">
+          <div class="journal-card__image">
+            <img src="/assets/images/journal-2.jpg" alt="Building a World" loading="lazy">
+          </div>
+          <div class="journal-card__content">
+            <span class="journal-card__category">Behind the Scenes</span>
+            <span class="journal-card__date">November 28, 2024</span>
+            <h2 class="journal-card__title">Building a World from Memory</h2>
+            <p class="journal-card__excerpt">Production designer Maria Santos reveals how the team recreated 1970s New York on a soundstage in Budapest.</p>
+            <span class="journal-card__read-more">Read Article →</span>
+          </div>
+        </a>
+      </article>
+      <article class="journal-card" data-type="interview" data-cursor="OPEN">
+        <a href="#" class="journal-card__link">
+          <div class="journal-card__image">
+            <img src="/assets/images/journal-3.jpg" alt="Interview with the Editor" loading="lazy">
+          </div>
+          <div class="journal-card__content">
+            <span class="journal-card__category">Interview</span>
+            <span class="journal-card__date">October 10, 2024</span>
+            <h2 class="journal-card__title">A Conversation with Sarah Mitchell</h2>
+            <p class="journal-card__excerpt">Editor Sarah Mitchell discusses the rhythm of cuts, the art of restraint, and finding the heartbeat of a film in the editing room.</p>
+            <span class="journal-card__read-more">Read Article →</span>
+          </div>
+        </a>
+      </article>
+      <article class="journal-card" data-type="essay" data-cursor="OPEN">
+        <a href="#" class="journal-card__link">
+          <div class="journal-card__image">
+            <img src="/assets/images/journal-4.jpg" alt="Sound Design" loading="lazy">
+          </div>
+          <div class="journal-card__content">
+            <span class="journal-card__category">Essay</span>
+            <span class="journal-card__date">September 5, 2024</span>
+            <h2 class="journal-card__title">The Silence Between Notes</h2>
+            <p class="journal-card__excerpt">Why the most powerful moments in cinema are often the ones without dialogue — exploring sound design as emotional architecture.</p>
+            <span class="journal-card__read-more">Read Article →</span>
+          </div>
+        </a>
+      </article>
+      <article class="journal-card" data-type="announcement" data-cursor="OPEN">
+        <a href="#" class="journal-card__link">
+          <div class="journal-card__image">
+            <img src="/assets/images/journal-5.jpg" alt="The Infinite Hour" loading="lazy">
+          </div>
+          <div class="journal-card__content">
+            <span class="journal-card__category">Announcement</span>
+            <span class="journal-card__date">August 20, 2024</span>
+            <h2 class="journal-card__title">Announcing "The Infinite Hour"</h2>
+            <p class="journal-card__excerpt">My next project explores time, memory, and the spaces between seconds. Production begins this fall.</p>
+            <span class="journal-card__read-more">Read Article →</span>
+          </div>
+        </a>
+      </article>
+      <article class="journal-card" data-type="behind-the-scenes" data-cursor="OPEN">
+        <a href="#" class="journal-card__link">
+          <div class="journal-card__image">
+            <img src="/assets/images/journal-6.jpg" alt="Color Grading" loading="lazy">
+          </div>
+          <div class="journal-card__content">
+            <span class="journal-card__category">Behind the Scenes</span>
+            <span class="journal-card__date">July 12, 2024</span>
+            <h2 class="journal-card__title">The Color of Memory</h2>
+            <p class="journal-card__excerpt">Colorist Daniel Zimmerman walks us through the grading process, creating a palette that feels like faded photographs.</p>
+            <span class="journal-card__read-more">Read Article →</span>
+          </div>
+        </a>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__content">
+      <div class="footer__left">
+        <span class="footer__name">Small Town studio</span>
+        <span class="footer__copy">&copy; 2025. All rights reserved.</span>
+      </div>
+      <div class="footer__right">
+        <a href="mailto:hello@smalltimestudio.com" class="footer__link" data-cursor="OPEN">hello@smalltimestudio.com</a>
+        <div class="footer__socials">
+          <a href="#" class="footer__link" data-cursor="OPEN">Instagram</a>
+          <a href="#" class="footer__link" data-cursor="OPEN">Vimeo</a>
+          <a href="#" class="footer__link" data-cursor="OPEN">Letterboxd</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="audio-toggle" id="audioToggle" aria-label="Toggle ambient sound">
+    <svg class="audio-toggle__icon audio-toggle__icon--on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+    <svg class="audio-toggle__icon audio-toggle__icon--off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+  </button>
+
+  <script type="module" src="/js/main.ts"></script>
+  <script type="module" src="/js/journal.ts"></script>
+</body>
+</html>

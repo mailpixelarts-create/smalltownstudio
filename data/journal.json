@@ -1,0 +1,58 @@
+{
+  "posts": [
+    {
+      "id": "language-of-shadows",
+      "title": "The Language of Shadows",
+      "category": "essay",
+      "date": "2024-12-15",
+      "image": "/assets/images/journal-1.jpg",
+      "excerpt": "How chiaroscuro lighting became the emotional backbone of \"The Last Frame\" and why darkness tells more than light.",
+      "content": ""
+    },
+    {
+      "id": "building-a-world",
+      "title": "Building a World from Memory",
+      "category": "behind-the-scenes",
+      "date": "2024-11-28",
+      "image": "/assets/images/journal-2.jpg",
+      "excerpt": "Production designer Maria Santos reveals how the team recreated 1970s New York on a soundstage in Budapest.",
+      "content": ""
+    },
+    {
+      "id": "conversation-with-editor",
+      "title": "A Conversation with Sarah Mitchell",
+      "category": "interview",
+      "date": "2024-10-10",
+      "image": "/assets/images/journal-3.jpg",
+      "excerpt": "Editor Sarah Mitchell discusses the rhythm of cuts, the art of restraint, and finding the heartbeat of a film in the editing room.",
+      "content": ""
+    },
+    {
+      "id": "silence-between-notes",
+      "title": "The Silence Between Notes",
+      "category": "essay",
+      "date": "2024-09-05",
+      "image": "/assets/images/journal-4.jpg",
+      "excerpt": "Why the most powerful moments in cinema are often the ones without dialogue — exploring sound design as emotional architecture.",
+      "content": ""
+    },
+    {
+      "id": "announcing-infinite-hour",
+      "title": "Announcing \"The Infinite Hour\"",
+      "category": "announcement",
+      "date": "2024-08-20",
+      "image": "/assets/images/journal-5.jpg",
+      "excerpt": "My next project explores time, memory, and the spaces between seconds. Production begins this fall.",
+      "content": ""
+    },
+    {
+      "id": "color-of-memory",
+      "title": "The Color of Memory",
+      "category": "behind-the-scenes",
+      "date": "2024-07-12",
+      "image": "/assets/images/journal-6.jpg",
+      "excerpt": "Colorist Daniel Zimmerman walks us through the grading process, creating a palette that feels like faded photographs.",
+      "content": ""
+    }
+  ]
+}

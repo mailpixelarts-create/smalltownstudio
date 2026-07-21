@@ -1,0 +1,69 @@
+:root {
+  /* Colors */
+  --color-black: #050505;
+  --color-black-light: #0a0a0a;
+  --color-black-medium: #141414;
+  --color-white: #f5f0e8;
+  --color-white-dim: rgba(245, 240, 232, 0.7);
+  --color-gold: #b8934b;
+  --color-gold-light: #d4af61;
+  --color-gold-dim: rgba(184, 147, 75, 0.3);
+  --color-blood: #7a2331;
+  --color-blood-light: #9a3040;
+  --color-gray: #888888;
+  --color-gray-dark: #333333;
+  --color-gray-light: #cccccc;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Font Sizes */
+  --text-xs: clamp(0.625rem, 0.5rem + 0.25vw, 0.75rem);
+  --text-sm: clamp(0.75rem, 0.625rem + 0.25vw, 0.875rem);
+  --text-base: clamp(0.875rem, 0.8rem + 0.15vw, 1rem);
+  --text-lg: clamp(1rem, 0.9rem + 0.25vw, 1.125rem);
+  --text-xl: clamp(1.125rem, 1rem + 0.35vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.2rem + 0.75vw, 2rem);
+  --text-3xl: clamp(2rem, 1.5rem + 1.25vw, 3rem);
+  --text-4xl: clamp(2.5rem, 1.8rem + 1.75vw, 4rem);
+  --text-5xl: clamp(3rem, 2rem + 2.5vw, 5rem);
+  --text-hero: clamp(4rem, 2.5rem + 3.75vw, 8rem);
+  --text-display: clamp(3rem, 2rem + 2.5vw, 6rem);
+
+  /* Spacing */
+  --space-xs: clamp(0.25rem, 0.2rem + 0.1vw, 0.5rem);
+  --space-sm: clamp(0.5rem, 0.4rem + 0.2vw, 0.75rem);
+  --space-md: clamp(1rem, 0.8rem + 0.5vw, 1.5rem);
+  --space-lg: clamp(1.5rem, 1.2rem + 0.75vw, 2.5rem);
+  --space-xl: clamp(2rem, 1.5rem + 1.25vw, 4rem);
+  --space-2xl: clamp(4rem, 3rem + 2.5vw, 8rem);
+
+  /* Layout */
+  --max-width: 1400px;
+  --gutter: clamp(1.5rem, 1rem + 2vw, 4rem);
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-expo: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-smooth: cubic-bezier(0.33, 1, 0.68, 1);
+
+  --duration-fast: 0.2s;
+  --duration-normal: 0.4s;
+  --duration-slow: 0.8s;
+  --duration-slower: 1.2s;
+
+  /* Z-index */
+  --z-cursor: 9999;
+  --z-loader: 9998;
+  --z-menu: 9990;
+  --z-nav: 9900;
+  --z-grain: 9800;
+  --z-overlay: 100;
+
+  /* Border */
+  --border-color: rgba(245, 240, 232, 0.1);
+  --border-color-hover: rgba(184, 147, 75, 0.3);
+}

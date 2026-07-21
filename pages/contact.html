@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Alexander Noir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/contact.css">
+</head>
+<body class="is-loading">
+  <div class="cursor" id="cursor">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+    <div class="cursor__label">VIEW</div>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="/" class="nav__logo"><span class="nav__logo-text">Small Town studio</span></a>
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+      <span class="nav__toggle-line"></span>
+      <span class="nav__toggle-line"></span>
+    </button>
+  </header>
+
+  <div class="menu" id="menu">
+    <video class="menu__bg" muted loop playsinline>
+      <source src="/assets/videos/menu-bg.mp4" type="video/mp4">
+    </video>
+    <nav class="menu__nav">
+      <a href="/" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">01</span><span class="menu__link-text">Home</span></a>
+      <a href="/pages/about.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">02</span><span class="menu__link-text">About</span></a>
+      <a href="/pages/filmography.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">03</span><span class="menu__link-text">Filmography</span></a>
+      <a href="/pages/journal.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">04</span><span class="menu__link-text">Journal</span></a>
+      <a href="/pages/contact.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">05</span><span class="menu__link-text">Contact</span></a>
+    </nav>
+    <div class="menu__footer">
+      <div class="menu__footer-col">
+        <p class="menu__footer-label">Inquiries</p>
+        <a href="mailto:hello@smalltimestudio.com" class="menu__footer-link">hello@smalltimestudio.com</a>
+      </div>
+      <div class="menu__footer-col">
+        <p class="menu__footer-label">Social</p>
+        <div class="menu__footer-socials">
+          <a href="#" class="menu__footer-link">Instagram</a>
+          <a href="#" class="menu__footer-link">Vimeo</a>
+          <a href="#" class="menu__footer-link">Letterboxd</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Animated Background -->
+  <div class="contact-bg" aria-hidden="true">
+    <div class="contact-bg__grain"></div>
+  </div>
+
+  <main id="main">
+    <section class="contact">
+      <div class="contact__content">
+        <div class="contact__info">
+          <span class="section-label">Contact</span>
+          <h1 class="contact__title" data-split="chars">Let's Create Something Beautiful</h1>
+          <p class="contact__text">Available for feature films, commercials, and music videos worldwide. Let's discuss your next project.</p>
+
+          <div class="contact__details">
+            <div class="contact__detail">
+              <span class="contact__detail-label">General Inquiries</span>
+              <a href="mailto:hello@smalltimestudio.com" class="contact__detail-value" data-cursor="OPEN">hello@smalltimestudio.com</a>
+            </div>
+            <div class="contact__detail">
+              <span class="contact__detail-label">Representation</span>
+              <a href="mailto:agent@creativemgmt.com" class="contact__detail-value" data-cursor="OPEN">agent@creativemgmt.com</a>
+            </div>
+            <div class="contact__detail">
+              <span class="contact__detail-label">Press</span>
+              <a href="mailto:press@alexandernoir.com" class="contact__detail-value" data-cursor="OPEN">press@alexandernoir.com</a>
+            </div>
+          </div>
+
+          <div class="contact__socials">
+            <a href="#" class="contact__social" data-cursor="OPEN">Instagram</a>
+            <a href="#" class="contact__social" data-cursor="OPEN">Vimeo</a>
+            <a href="#" class="contact__social" data-cursor="OPEN">Letterboxd</a>
+            <a href="#" class="contact__social" data-cursor="OPEN">IMDb</a>
+          </div>
+        </div>
+
+        <div class="contact__form-wrap">
+          <form class="contact__form" id="contactForm">
+            <div class="form__group">
+              <label class="form__label" for="name">Name</label>
+              <input class="form__input" type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="email">Email</label>
+              <input class="form__input" type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="project">Project Type</label>
+              <select class="form__input form__select" id="project" name="project">
+                <option value="">Select project type</option>
+                <option value="feature">Feature Film</option>
+                <option value="short">Short Film</option>
+                <option value="commercial">Commercial</option>
+                <option value="music-video">Music Video</option>
+                <option value="documentary">Documentary</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="message">Message</label>
+              <textarea class="form__textarea" id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+            </div>
+            <button class="btn btn--primary btn--large" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__content">
+      <div class="footer__left">
+        <span class="footer__name">Small Town studio</span>
+        <span class="footer__copy">&copy; 2025. All rights reserved.</span>
+      </div>
+      <div class="footer__right">
+        <a href="mailto:hello@smalltimestudio.com" class="footer__link" data-cursor="OPEN">hello@smalltimestudio.com</a>
+        <div class="footer__socials">
+          <a href="#" class="footer__link" data-cursor="OPEN">Instagram</a>
+          <a href="#" class="footer__link" data-cursor="OPEN">Vimeo</a>
+          <a href="#" class="footer__link" data-cursor="OPEN">Letterboxd</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="audio-toggle" id="audioToggle" aria-label="Toggle ambient sound">
+    <svg class="audio-toggle__icon audio-toggle__icon--on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+    <svg class="audio-toggle__icon audio-toggle__icon--off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+  </button>
+
+  <script type="module" src="/js/main.ts"></script>
+  <script type="module" src="/js/contact.ts"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filmography — Alexander Noir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/filmography.css">
+</head>
+<body class="is-loading">
+  <div class="cursor" id="cursor">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+    <div class="cursor__label">VIEW</div>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="/" class="nav__logo"><span class="nav__logo-text">Small Town studio</span></a>
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+      <span class="nav__toggle-line"></span>
+      <span class="nav__toggle-line"></span>
+    </button>
+  </header>
+
+  <div class="menu" id="menu">
+    <video class="menu__bg" muted loop playsinline>
+      <source src="/assets/videos/menu-bg.mp4" type="video/mp4">
+    </video>
+    <nav class="menu__nav">
+      <a href="/" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">01</span><span class="menu__link-text">Home</span></a>
+      <a href="/pages/about.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">02</span><span class="menu__link-text">About</span></a>
+      <a href="/pages/filmography.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">03</span><span class="menu__link-text">Filmography</span></a>
+      <a href="/pages/journal.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">04</span><span class="menu__link-text">Journal</span></a>
+      <a href="/pages/contact.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">05</span><span class="menu__link-text">Contact</span></a>
+    </nav>
+    <div class="menu__footer">
+      <div class="menu__footer-col">
+        <p class="menu__footer-label">Inquiries</p>
+        <a href="mailto:hello@smalltimestudio.com" class="menu__footer-link">hello@smalltimestudio.com</a>
+      </div>
+      <div class="menu__footer-col">
+        <p class="menu__footer-label">Social</p>
+        <div class="menu__footer-socials">
+          <a href="#" class="menu__footer-link">Instagram</a>
+          <a href="#" class="menu__footer-link">Vimeo</a>
+          <a href="#" class="menu__footer-link">Letterboxd</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- Header -->
+    <section class="filmography-header">
+      <span class="section-label">Filmography</span>
+      <h1 class="filmography-title" data-split="chars">Selected Works</h1>
+      <p class="filmography-subtitle">A curated selection of films exploring the depths of human experience.</p>
+    </section>
+
+    <!-- Filters -->
+    <section class="filmography-filters">
+      <div class="tags">
+        <button class="tag is-active" data-filter="all">All</button>
+        <button class="tag" data-filter="feature">Features</button>
+        <button class="tag" data-filter="short">Shorts</button>
+        <button class="tag" data-filter="documentary">Documentary</button>
+        <button class="tag" data-filter="commercial">Commercial</button>
+        <button class="tag" data-filter="music-video">Music Video</button>
+      </div>
+    </section>
+
+    <!-- Film Grid -->
+    <section class="filmography-grid">
+      <article class="film-card" data-type="feature" data-cursor="PLAY" data-vimeo="1193490665">
+        <div class="film-card__link">
+          <div class="film-card__image">
+            <img src="/assets/images/film-1.jpg" alt="The Last Frame" loading="lazy">
+            <div class="film-card__overlay"><span class="film-card__play">Watch Trailer</span></div>
+          </div>
+          <div class="film-card__info">
+            <span class="film-card__year">2024</span>
+            <h3 class="film-card__title">The Last Frame</h3>
+            <span class="film-card__type">Feature Film</span>
+          </div>
+        </div>
+      </article>
+      <article class="film-card" data-type="short" data-cursor="PLAY" data-vimeo="1193490665">
+        <div class="film-card__link">
+          <div class="film-card__image">
+            <img src="/assets/images/film-2.jpg" alt="Echoes in Silence" loading="lazy">
+            <div class="film-card__overlay"><span class="film-card__play">Watch Trailer</span></div>
+          </div>
+          <div class="film-card__info">
+            <span class="film-card__year">2023</span>
+            <h3 class="film-card__title">Echoes in Silence</h3>
+            <span class="film-card__type">Short Film</span>
+          </div>
+        </div>
+      </article>
+      <article class="film-card" data-type="documentary" data-cursor="PLAY" data-vimeo="1193490665">
+        <div class="film-card__link">
+          <div class="film-card__image">
+            <img src="/assets/images/film-3.jpg" alt="Beneath the Surface" loading="lazy">
+            <div class="film-card__overlay"><span class="film-card__play">Watch Trailer</span></div>
+          </div>
+          <div class="film-card__info">
+            <span class="film-card__year">2023</span>
+            <h3 class="film-card__title">Beneath the Surface</h3>
+            <span class="film-card__type">Documentary</span>
+          </div>
+        </div>
+      </article>
+      <article class="film-card" data-type="feature" data-cursor="PLAY" data-vimeo="1193490665">
+        <div class="film-card__link">
+          <div class="film-card__image">
+            <img src="/assets/images/film-4.jpg" alt="Whispers of the Forgotten" loading="lazy">
+            <div class="film-card__overlay"><span class="film-card__play">Watch Trailer</span></div>
+          </div>
+          <div class="film-card__info">
+            <span class="film-card__year">2022</span>
+            <h3 class="film-card__title">Whispers of the Forgotten</h3>
+            <span class="film-card__type">Feature Film</span>
+          </div>
+        </div>
+      </article>
+      <article class="film-card" data-type="commercial" data-cursor="PLAY" data-vimeo="1193490665">
+        <div class="film-card__link">
+          <div class="film-card__image">
+            <img src="/assets/images/film-5.jpg" alt="Nike — Beyond Limits" loading="lazy">
+            <div class="film-card__overlay"><span class="film-card__play">Watch Trailer</span></div>
+          </div>
+          <div class="film-card__info">
+            <span class="film-card__year">2022</span>
+            <h3 class="film-card__title">Nike — Beyond Limits</h3>
+            <span class="film-card__type">Commercial</span>
+          </div>
+        </div>
+      </article>
+      <article class="film-card" data-type="music-video" data-cursor="PLAY" data-vimeo="1193490665">
+        <div class="film-card__link">
+          <div class="film-card__image">
+            <img src="/assets/images/film-6.jpg" alt="Aurora — Into the Light" loading="lazy">
+            <div class="film-card__overlay"><span class="film-card__play">Watch Trailer</span></div>
+          </div>
+          <div class="film-card__info">
+            <span class="film-card__year">2021</span>
+            <h3 class="film-card__title">Aurora — Into the Light</h3>
+            <span class="film-card__type">Music Video</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Video Lightbox -->
+    <div class="video-lightbox" id="videoLightbox">
+      <button class="video-lightbox__close" id="videoLightboxClose" aria-label="Close">&times;</button>
+      <div class="video-lightbox__content">
+        <div class="video-lightbox__player" id="videoLightboxPlayer"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__content">
+      <div class="footer__left">
+        <span class="footer__name">Small Town studio</span>
+        <span class="footer__copy">&copy; 2025. All rights reserved.</span>
+      </div>
+      <div class="footer__right">
+        <a href="mailto:hello@smalltimestudio.com" class="footer__link" data-cursor="OPEN">hello@smalltimestudio.com</a>
+        <div class="footer__socials">
+          <a href="#" class="footer__link" data-cursor="OPEN">Instagram</a>
+          <a href="#" class="footer__link" data-cursor="OPEN">Vimeo</a>
+          <a href="#" class="footer__link" data-cursor="OPEN">Letterboxd</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="audio-toggle" id="audioToggle" aria-label="Toggle ambient sound">
+    <svg class="audio-toggle__icon audio-toggle__icon--on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+    <svg class="audio-toggle__icon audio-toggle__icon--off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+  </button>
+
+  <script type="module" src="/js/main.ts"></script>
+  <script type="module" src="/js/filmography.ts"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "clients": [
+    { "name": "A24", "type": "Production" },
+    { "name": "Apple", "type": "Technology" },
+    { "name": "Nike", "type": "Sportswear" },
+    { "name": "Samsung", "type": "Technology" },
+    { "name": "HBO", "type": "Streaming" },
+    { "name": "Netflix", "type": "Streaming" },
+    { "name": "Spotify", "type": "Music" },
+    { "name": "Tesla", "type": "Automotive" }
+  ]
+}

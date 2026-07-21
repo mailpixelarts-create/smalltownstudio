@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Alexander Noir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/about.css">
+</head>
+<body class="is-loading">
+  <div class="cursor" id="cursor">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+    <div class="cursor__label">VIEW</div>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="/" class="nav__logo"><span class="nav__logo-text">Small Town studio</span></a>
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+      <span class="nav__toggle-line"></span>
+      <span class="nav__toggle-line"></span>
+    </button>
+  </header>
+
+  <div class="menu" id="menu">
+    <video class="menu__bg" muted loop playsinline>
+      <source src="/assets/videos/menu-bg.mp4" type="video/mp4">
+    </video>
+    <nav class="menu__nav">
+      <a href="/" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">01</span><span class="menu__link-text">Home</span></a>
+      <a href="/pages/about.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">02</span><span class="menu__link-text">About</span></a>
+      <a href="/pages/filmography.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">03</span><span class="menu__link-text">Filmography</span></a>
+      <a href="/pages/journal.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">04</span><span class="menu__link-text">Journal</span></a>
+      <a href="/pages/contact.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">05</span><span class="menu__link-text">Contact</span></a>
+    </nav>
+    <div class="menu__footer">
+      <div class="menu__footer-col">
+        <p class="menu__footer-label">Inquiries</p>
+        <a href="mailto:hello@smalltimestudio.com" class="menu__footer-link">hello@smalltimestudio.com</a>
+      </div>
+      <div class="menu__footer-col">
+        <p class="menu__footer-label">Social</p>
+        <div class="menu__footer-socials">
+          <a href="#" class="menu__footer-link">Instagram</a>
+          <a href="#" class="menu__footer-link">Vimeo</a>
+          <a href="#" class="menu__footer-link">Letterboxd</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- Hero Portrait -->
+    <section class="about-hero">
+      <div class="about-hero__portrait">
+        <img src="/assets/images/portrait.jpg" alt="Alexander Noir portrait" loading="lazy">
+      </div>
+      <div class="about-hero__intro">
+        <span class="section-label">About</span>
+        <h1 class="about-hero__title" data-split="chars">The Art of Seeing</h1>
+        <p class="about-hero__lead">Award-winning director with a passion for visual storytelling that transcends boundaries and evokes deep emotional resonance.</p>
+      </div>
+    </section>
+
+    <!-- Bio -->
+    <section class="about-bio">
+      <div class="about-bio__content">
+        <div class="about-bio__text">
+          <p class="about-bio__paragraph">Alexander Noir is a visionary filmmaker whose work sits at the intersection of art house cinema and mainstream storytelling. With a distinctive visual language that draws from classic European cinema while embracing contemporary techniques, Noir has established himself as one of the most compelling voices in modern filmmaking.</p>
+          <p class="about-bio__paragraph">Born with an innate understanding of light and shadow, Noir's approach to filmmaking is deeply rooted in the belief that every frame should tell a story. His films are characterized by their meticulous attention to visual detail, nuanced performances, and narratives that linger in the mind long after the credits roll.</p>
+          <p class="about-bio__paragraph">Drawing inspiration from masters like Andrei Tarkovsky, Ingmar Bergman, and contemporary visionaries like Denis Villeneuve and Barry Jenkins, Noir crafts films that are both deeply personal and universally resonant. His work has been featured at the world's most prestigious film festivals, earning recognition for its artistic integrity and emotional depth.</p>
+        </div>
+        <div class="about-bio__stats">
+          <div class="stat">
+            <span class="stat__number">12</span>
+            <span class="stat__label">Feature Films</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number">47</span>
+            <span class="stat__label">Awards</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number">23</span>
+            <span class="stat__label">Festival Selections</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="about-timeline">
+      <div class="about-timeline__header">
+        <span class="section-label">Career</span>
+        <h2 class="about-timeline__title" data-split="chars">Journey</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline__item">
+          <span class="timeline__year">2015</span>
+          <h3 class="timeline__title">Short Film Debut</h3>
+          <p class="timeline__text">Released "Fragments" — a 20-minute short that caught the attention of A24 producers at Sundance.</p>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__year">2017</span>
+          <h3 class="timeline__title">First Feature</h3>
+          <p class="timeline__text">"Whispers of the Forgotten" premiered at Venice, winning the Horizons Award for Best Director.</p>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__year">2019</span>
+          <h3 class="timeline__title">International Recognition</h3>
+          <p class="timeline__text">"Beneath the Surface" selected for competition at Cannes, marking a turning point in career trajectory.</p>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__year">2021</span>
+          <h3 class="timeline__title">Documentary Work</h3>
+          <p class="timeline__text">Expanded into documentary with "Echoes in Silence," winning Tribeca's Best Documentary Feature.</p>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__year">2023</span>
+          <h3 class="timeline__title">Career Peak</h3>
+          <p class="timeline__text">"The Last Frame" received three Academy Award nominations and won the Golden Lion at Venice.</p>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__year">2024</span>
+          <h3 class="timeline__title">New Horizons</h3>
+          <p class="timeline__text">Currently in post-production on "The Infinite Hour," a sci-fi meditation on time and memory.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy -->
+    <section class="about-philosophy">
+      <div class="about-philosophy__content">
+        <span class="section-label">Philosophy</span>
+        <blockquote class="about-philosophy__quote" data-split="lines">
+          "I don't make films to entertain. I make films to transform. Every audience member who leaves my theater should carry a piece of the story with them — changed, challenged, alive."
+        </blockquote>
+        <cite class="about-philosophy__cite">— Alexander Noir</cite>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="about-cta">
+      <div class="about-cta__content">
+        <h2 class="about-cta__title" data-split="chars">Let's Collaborate</h2>
+        <p class="about-cta__text">Available for feature films, commercials, and music videos worldwide.</p>
+        <a href="/pages/contact.html" class="btn btn--primary btn--large" data-cursor="OPEN">Get in Touch</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__content">
+      <div class="footer__left">
+        <span class="footer__name">Small Town studio</span>
+        <span class="footer__copy">&copy; 2025. All rights reserved.</span>
+      </div>
+      <div class="footer__right">
+        <a href="mailto:hello@smalltimestudio.com" class="footer__link" data-cursor="OPEN">hello@smalltimestudio.com</a>
+        <div class="footer__socials">
+          <a href="#" class="footer__link" data-cursor="OPEN">Instagram</a>
+          <a href="#" class="footer__link" data-cursor="OPEN">Vimeo</a>
+          <a href="#" class="footer__link" data-cursor="OPEN">Letterboxd</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="audio-toggle" id="audioToggle" aria-label="Toggle ambient sound">
+    <svg class="audio-toggle__icon audio-toggle__icon--on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+    <svg class="audio-toggle__icon audio-toggle__icon--off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+  </button>
+
+  <script type="module" src="/js/main.ts"></script>
+</body>
+</html>

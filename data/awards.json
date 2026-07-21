@@ -1,0 +1,64 @@
+{
+  "awards": [
+    {
+      "festival": "Cannes Film Festival",
+      "award": "Palme d'Or Nomination",
+      "year": 2024,
+      "film": "The Last Frame"
+    },
+    {
+      "festival": "Venice Film Festival",
+      "award": "Golden Lion - Best Director",
+      "year": 2024,
+      "film": "The Last Frame"
+    },
+    {
+      "festival": "Academy Awards",
+      "award": "Best Picture, Best Director, Best Cinematography",
+      "year": 2024,
+      "film": "The Last Frame"
+    },
+    {
+      "festival": "Sundance Film Festival",
+      "award": "Grand Jury Prize",
+      "year": 2023,
+      "film": "Echoes in Silence"
+    },
+    {
+      "festival": "Tribeca Film Festival",
+      "award": "Best Documentary Feature",
+      "year": 2023,
+      "film": "Beneath the Surface"
+    },
+    {
+      "festival": "Berlin International Film Festival",
+      "award": "Silver Bear - Best Director",
+      "year": 2022,
+      "film": "Whispers of the Forgotten"
+    },
+    {
+      "festival": "Venice Film Festival",
+      "award": "Horizons Award for Best Director",
+      "year": 2022,
+      "film": "Whispers of the Forgotten"
+    },
+    {
+      "festival": "Toronto International Film Festival",
+      "award": "People's Choice Award",
+      "year": 2022,
+      "film": "Whispers of the Forgotten"
+    },
+    {
+      "festival": "UK Music Video Awards",
+      "award": "Best Pop Video - International",
+      "year": 2021,
+      "film": "Aurora — Into the Light"
+    },
+    {
+      "festival": "Tribeca Film Festival",
+      "award": "Best Narrative Feature",
+      "year": 2021,
+      "film": "Fragments"
+    }
+  ]
+}

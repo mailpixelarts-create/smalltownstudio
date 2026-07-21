@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Scene Missing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/404.css">
+</head>
+<body class="is-loading">
+  <div class="cursor" id="cursor">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+    <div class="cursor__label">VIEW</div>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="/" class="nav__logo"><span class="nav__logo-text">Small Town studio</span></a>
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+      <span class="nav__toggle-line"></span>
+      <span class="nav__toggle-line"></span>
+    </button>
+  </header>
+
+  <div class="menu" id="menu">
+    <video class="menu__bg" muted loop playsinline>
+      <source src="/assets/videos/menu-bg.mp4" type="video/mp4">
+    </video>
+    <nav class="menu__nav">
+      <a href="/" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">01</span><span class="menu__link-text">Home</span></a>
+      <a href="/pages/about.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">02</span><span class="menu__link-text">About</span></a>
+      <a href="/pages/filmography.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">03</span><span class="menu__link-text">Filmography</span></a>
+      <a href="/pages/journal.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">04</span><span class="menu__link-text">Journal</span></a>
+      <a href="/pages/contact.html" class="menu__link" data-cursor="OPEN"><span class="menu__link-number">05</span><span class="menu__link-text">Contact</span></a>
+    </nav>
+    <div class="menu__footer">
+      <div class="menu__footer-col">
+        <p class="menu__footer-label">Inquiries</p>
+        <a href="mailto:hello@smalltimestudio.com" class="menu__footer-link">hello@smalltimestudio.com</a>
+      </div>
+      <div class="menu__footer-col">
+        <p class="menu__footer-label">Social</p>
+        <div class="menu__footer-socials">
+          <a href="#" class="menu__footer-link">Instagram</a>
+          <a href="#" class="menu__footer-link">Vimeo</a>
+          <a href="#" class="menu__footer-link">Letterboxd</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="error-page">
+      <div class="error-page__content">
+        <div class="error-page__code">404</div>
+        <h1 class="error-page__title" data-split="chars">Scene Missing</h1>
+        <p class="error-page__text">The page you're looking for has been cut from the final edit.</p>
+        <a href="/" class="btn btn--outline" data-cursor="OPEN">Return Home</a>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/js/main.ts"></script>
+</body>
+</html>
