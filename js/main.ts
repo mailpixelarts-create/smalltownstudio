@@ -87,6 +87,7 @@ class App {
     this.initCursor();
     this.initAudio();
     this.initShowreel();
+    this.initBtsSlider();
     this.initPageTransitions();
   }
 
@@ -279,6 +280,8 @@ class App {
         ease: 'power3.out'
       });
     });
+
+    // BTS slider items — handled by CSS animation
   }
 
   private initParallax() {
@@ -440,6 +443,59 @@ class App {
         volume: 0
       });
     }
+  }
+
+  private initBtsSlider() {
+    const track = document.getElementById('btsTrack');
+    const prevBtn = document.getElementById('btsPrev');
+    const nextBtn = document.getElementById('btsNext');
+    const dotsContainer = document.getElementById('btsDots');
+    if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+
+    const dots = dotsContainer.querySelectorAll('.bts__dot');
+    const totalPages = dots.length;
+    let currentPage = 0;
+
+    const updateDots = () => {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === currentPage);
+      });
+    };
+
+    const scrollToPage = (page: number) => {
+      const scrollAmount = track.clientWidth / 3;
+      track.scrollTo({ left: scrollAmount * page * 3, behavior: 'smooth' });
+      currentPage = page;
+      updateDots();
+    };
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < totalPages - 1) {
+        scrollToPage(currentPage + 1);
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 0) {
+        scrollToPage(currentPage - 1);
+      }
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.getAttribute('data-index') || '0');
+        scrollToPage(index);
+      });
+    });
+
+    track.addEventListener('scroll', () => {
+      const scrollAmount = track.clientWidth / 3;
+      const page = Math.round(track.scrollLeft / (scrollAmount * 3));
+      if (page !== currentPage && page >= 0 && page < totalPages) {
+        currentPage = page;
+        updateDots();
+      }
+    });
   }
 
   private initPageTransitions() {

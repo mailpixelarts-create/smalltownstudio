@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Alexander Noir — Award-winning film director crafting visually stunning, emotionally resonant cinema.">
-  <title>Alexander Noir — Director</title>
+  <meta name="description" content="Small Town studio — Crafting visually stunning, emotionally resonant cinema.">
+  <title>Small Town studio — Director</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/components.css">
 
-  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+  <link rel="icon" type="image/png" href="/assets/icons/favicon.PNG">
 </head>
 <body class="is-loading">
 
@@ -106,7 +106,7 @@
       <section class="hero" id="hero">
         <div class="hero__video-wrap">
           <div class="hero__video" id="heroVideo">
-            <div class="hero__video-poster" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);"></div>
+            <div class="hero__video-poster" style="background: url('/assets/images/storyboard_wall.jpg') center/cover no-repeat;"></div>
             <div class="hero__video-overlay"></div>
           </div>
         </div>
@@ -220,6 +220,10 @@
 
       <!-- Manifesto Section -->
       <section class="manifesto" id="manifesto">
+        <div class="manifesto__bg">
+          <img src="/assets/images/projector_light.jpg" alt="" loading="lazy">
+        </div>
+        <div class="manifesto__overlay"></div>
         <div class="manifesto__content">
           <span class="section-label">Philosophy</span>
           <blockquote class="manifesto__quote" data-split="lines">
@@ -232,8 +236,8 @@
       <!-- Awards Section -->
       <section class="awards" id="awards">
         <div class="awards__header">
-          <span class="section-label">Recognition</span>
-          <h2 class="awards__title" data-split="chars">Awards &amp; Festivals</h2>
+          <span class="section-label">Selected Works</span>
+          <h2 class="awards__title" data-split="chars">Projects &amp; Productions</h2>
         </div>
         <div class="awards__list">
           <div class="awards__item">
@@ -292,16 +296,45 @@
           <span class="section-label">Behind the Scenes</span>
           <h2 class="bts__title" data-split="chars">The Process</h2>
         </div>
-        <div class="bts__gallery">
-          <div class="bts__item">
-            <img src="/assets/images/bts-1.jpg" alt="Behind the scenes" loading="lazy">
+        <div class="bts__slider">
+          <button class="bts__nav bts__nav--prev" id="btsPrev" aria-label="Previous">&#8592;</button>
+          <div class="bts__track" id="btsTrack">
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(1).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(3).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(4).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(6).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(7).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(8).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(9).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(11).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(12).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(13).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(14).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(15).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(16).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(17).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(18).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(19).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(20).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(21).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(22).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(23).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(24).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(25).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(26).webp" alt="Behind the scenes" loading="lazy"></div>
+            <div class="bts__item"><img src="/assets/BTS/Small%20Town%20studio%20(27).webp" alt="Behind the scenes" loading="lazy"></div>
           </div>
-          <div class="bts__item">
-            <img src="/assets/images/bts-2.jpg" alt="Behind the scenes" loading="lazy">
-          </div>
-          <div class="bts__item">
-            <img src="/assets/images/bts-3.jpg" alt="Behind the scenes" loading="lazy">
-          </div>
+          <button class="bts__nav bts__nav--next" id="btsNext" aria-label="Next">&#8594;</button>
+        </div>
+        <div class="bts__dots" id="btsDots">
+          <button class="bts__dot is-active" data-index="0" aria-label="Go to slide 1"></button>
+          <button class="bts__dot" data-index="1" aria-label="Go to slide 2"></button>
+          <button class="bts__dot" data-index="2" aria-label="Go to slide 3"></button>
+          <button class="bts__dot" data-index="3" aria-label="Go to slide 4"></button>
+          <button class="bts__dot" data-index="4" aria-label="Go to slide 5"></button>
+          <button class="bts__dot" data-index="5" aria-label="Go to slide 6"></button>
+          <button class="bts__dot" data-index="6" aria-label="Go to slide 7"></button>
+          <button class="bts__dot" data-index="7" aria-label="Go to slide 8"></button>
         </div>
       </section>
 
@@ -310,7 +343,7 @@
         <div class="contact-cta__content">
           <span class="section-label">Get in Touch</span>
           <h2 class="contact-cta__title" data-split="chars">Let's Create Something Beautiful</h2>
-          <p class="contact-cta__text">Available for feature films, commercials, and music videos worldwide.</p>
+          <p class="contact-cta__text">Available for feature films, commercials, music videos pre & post-production worldwide.</p>
           <a href="/pages/contact.html" class="btn btn--primary btn--large" data-cursor="OPEN">Start a Conversation</a>
         </div>
       </section>
@@ -328,8 +361,8 @@
         <a href="mailto:hello@smalltimestudio.com" class="footer__link" data-cursor="OPEN">hello@smalltimestudio.com</a>
         <div class="footer__socials">
           <a href="#" class="footer__link" data-cursor="OPEN">Instagram</a>
-          <a href="#" class="footer__link" data-cursor="OPEN">Vimeo</a>
-          <a href="#" class="footer__link" data-cursor="OPEN">Letterboxd</a>
+          <a href="https://vimeo.com/user102220774?fl=pl&fe=by" class="footer__link" data-cursor="OPEN" target="_blank" rel="noopener">Vimeo</a>
+          <a href="https://www.youtube.com/@BeingIndianchannel" class="footer__link" data-cursor="OPEN" target="_blank" rel="noopener">YouTube</a>
         </div>
       </div>
     </div>
