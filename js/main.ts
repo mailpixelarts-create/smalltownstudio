@@ -139,23 +139,60 @@ class App {
 
     // Titles with split text
     (gsap.utils.toArray('[data-split="chars"]') as HTMLElement[]).forEach((el) => {
+      const isHero = el.closest('.hero');
       const chars = el.querySelectorAll('.char');
-      if (chars.length === 0) return;
-      gsap.fromTo(chars,
-        { y: '100%', opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: el as HTMLElement,
-            start: 'top 85%',
-            toggleActions: 'play none none none'
-          },
-          y: '0%',
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.02,
-          ease: 'power3.out'
+      if (!isHero && chars.length === 0) return;
+      if (isHero) {
+        // Hero title — animate lines from below with clip reveal
+        const lines = el.querySelectorAll('.hero__title-line');
+        if (lines.length > 0) {
+          gsap.fromTo(lines,
+            { y: 60, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1.2,
+              stagger: 0.15,
+              ease: 'power3.out',
+              delay: 0.3,
+              onComplete: () => {
+                document.body.classList.remove('is-loading');
+              }
+            }
+          );
+        } else {
+          // Fallback — animate the whole element
+          gsap.fromTo(el,
+            { y: 40, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              ease: 'power3.out',
+              delay: 0.3,
+              onComplete: () => {
+                document.body.classList.remove('is-loading');
+              }
+            }
+          );
         }
-      );
+      } else {
+        gsap.fromTo(chars,
+          { y: '100%', opacity: 0 },
+          {
+            scrollTrigger: {
+              trigger: el as HTMLElement,
+              start: 'top 85%',
+              toggleActions: 'play none none none'
+            },
+            y: '0%',
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.02,
+            ease: 'power3.out'
+          }
+        );
+      }
     });
 
     // Lines
@@ -406,11 +443,13 @@ class App {
   }
 
   private initPageTransitions() {
-    // Fade-in on page load — remove is-loading that was set in HTML
-    requestAnimationFrame(() => {
-      getComputedStyle(document.body).opacity; // force layout to ensure paint
-      document.body.classList.remove('is-loading');
-    });
+    // Fade-in on page load — skip if hero exists (hero animation handles it)
+    if (!document.querySelector('.hero')) {
+      requestAnimationFrame(() => {
+        getComputedStyle(document.body).opacity;
+        document.body.classList.remove('is-loading');
+      });
+    }
 
     // Fade-out on internal link click (skip menu links — they have their own handler)
     document.querySelectorAll('a[href]').forEach((link) => {
