@@ -89,6 +89,7 @@ class App {
     this.initShowreel();
     this.initBtsSlider();
     this.initPageTransitions();
+    this.initVideoLightbox();
   }
 
   private initSmoothScroll() {
@@ -522,6 +523,46 @@ class App {
           window.location.href = href;
         }, 400);
       });
+    });
+  }
+
+  private initVideoLightbox() {
+    const lightbox = document.getElementById('videoLightbox') as HTMLElement;
+    const lightboxClose = document.getElementById('videoLightboxClose') as HTMLElement;
+    const lightboxPlayer = document.getElementById('videoLightboxPlayer') as HTMLElement;
+    if (!lightbox || !lightboxPlayer) return;
+
+    // Open lightbox on film card click
+    document.querySelectorAll('.film-card[data-vimeo]').forEach((card) => {
+      card.addEventListener('click', () => {
+        const vimeoId = card.getAttribute('data-vimeo');
+        if (!vimeoId) return;
+
+        lightboxPlayer.innerHTML = `<iframe src="https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+        lightbox.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // Close lightbox
+    const closeLightbox = () => {
+      lightbox.classList.remove('is-open');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        lightboxPlayer.innerHTML = '';
+      }, 400);
+    };
+
+    if (lightboxClose) {
+      lightboxClose.addEventListener('click', closeLightbox);
+    }
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
     });
   }
 }

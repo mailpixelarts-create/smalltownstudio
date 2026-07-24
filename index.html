@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/filmography.css">
 
   <link rel="icon" type="image/png" href="/assets/icons/favicon.PNG">
 </head>
@@ -152,65 +153,65 @@
           <h2 class="film-grid__title" data-split="chars">Featured Work</h2>
         </div>
         <div class="film-grid__items">
-          <article class="film-card" data-cursor="PLAY">
-            <a href="/pages/film.html" class="film-card__link">
+          <article class="film-card" data-cursor="PLAY" data-vimeo="1193490665">
+            <div class="film-card__link">
               <div class="film-card__image">
-                <img src="/assets/images/film-1.jpg" alt="The Last Frame" loading="lazy">
+                <img src="https://vumbnail.com/1193490665.jpg" alt="OLI — The Raid ft. Saurav Ganguly" loading="lazy">
                 <div class="film-card__overlay">
                   <span class="film-card__play">Watch Trailer</span>
                 </div>
               </div>
               <div class="film-card__info">
                 <span class="film-card__year">2024</span>
-                <h3 class="film-card__title">The Last Frame</h3>
-                <span class="film-card__type">Feature Film</span>
+                <h3 class="film-card__title">OLI — The Raid ft. Saurav Ganguly</h3>
+                <span class="film-card__type">Commercial</span>
               </div>
-            </a>
+            </div>
           </article>
-          <article class="film-card" data-cursor="PLAY">
-            <a href="/pages/film.html" class="film-card__link">
+          <article class="film-card" data-cursor="PLAY" data-vimeo="1082878062">
+            <div class="film-card__link">
               <div class="film-card__image">
-                <img src="/assets/images/film-2.jpg" alt="Echoes in Silence" loading="lazy">
+                <img src="https://vumbnail.com/1082878062.jpg" alt="Renée Kajal TVC ft. Supriya Pathak" loading="lazy">
+                <div class="film-card__overlay">
+                  <span class="film-card__play">Watch Trailer</span>
+                </div>
+              </div>
+              <div class="film-card__info">
+                <span class="film-card__year">2024</span>
+                <h3 class="film-card__title">Renée Kajal TVC ft. Supriya Pathak</h3>
+                <span class="film-card__type">Commercial</span>
+              </div>
+            </div>
+          </article>
+          <article class="film-card" data-cursor="PLAY" data-vimeo="1175133984">
+            <div class="film-card__link">
+              <div class="film-card__image">
+                <img src="https://vumbnail.com/1175133984.jpg" alt="Citroën — Woman's Day" loading="lazy">
+                <div class="film-card__overlay">
+                  <span class="film-card__play">Watch Trailer</span>
+                </div>
+              </div>
+              <div class="film-card__info">
+                <span class="film-card__year">2024</span>
+                <h3 class="film-card__title">Citroën — Woman's Day</h3>
+                <span class="film-card__type">Commercial</span>
+              </div>
+            </div>
+          </article>
+          <article class="film-card" data-cursor="PLAY" data-vimeo="703150688">
+            <div class="film-card__link">
+              <div class="film-card__image">
+                <img src="https://vumbnail.com/703150688.jpg" alt="Raadhe Ma ft. Aparshakti Khurrana" loading="lazy">
                 <div class="film-card__overlay">
                   <span class="film-card__play">Watch Trailer</span>
                 </div>
               </div>
               <div class="film-card__info">
                 <span class="film-card__year">2023</span>
-                <h3 class="film-card__title">Echoes in Silence</h3>
-                <span class="film-card__type">Short Film</span>
+                <h3 class="film-card__title">Raadhe Ma ft. Aparshakti Khurrana</h3>
+                <span class="film-card__type">Commercial</span>
               </div>
-            </a>
-          </article>
-          <article class="film-card" data-cursor="PLAY">
-            <a href="/pages/film.html" class="film-card__link">
-              <div class="film-card__image">
-                <img src="/assets/images/film-3.jpg" alt="Beneath the Surface" loading="lazy">
-                <div class="film-card__overlay">
-                  <span class="film-card__play">Watch Trailer</span>
-                </div>
-              </div>
-              <div class="film-card__info">
-                <span class="film-card__year">2023</span>
-                <h3 class="film-card__title">Beneath the Surface</h3>
-                <span class="film-card__type">Documentary</span>
-              </div>
-            </a>
-          </article>
-          <article class="film-card" data-cursor="PLAY">
-            <a href="/pages/film.html" class="film-card__link">
-              <div class="film-card__image">
-                <img src="/assets/images/film-4.jpg" alt="Whispers of the Forgotten" loading="lazy">
-                <div class="film-card__overlay">
-                  <span class="film-card__play">Watch Trailer</span>
-                </div>
-              </div>
-              <div class="film-card__info">
-                <span class="film-card__year">2022</span>
-                <h3 class="film-card__title">Whispers of the Forgotten</h3>
-                <span class="film-card__type">Feature Film</span>
-              </div>
-            </a>
+            </div>
           </article>
         </div>
         <div class="film-grid__cta">
@@ -349,6 +350,14 @@
       </section>
 
   </main>
+
+  <!-- Video Lightbox -->
+  <div class="video-lightbox" id="videoLightbox">
+    <button class="video-lightbox__close" id="videoLightboxClose" aria-label="Close">&times;</button>
+    <div class="video-lightbox__content">
+      <div class="video-lightbox__player" id="videoLightboxPlayer"></div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">
