@@ -33,35 +33,42 @@ class App {
   }
 
   private initLoader() {
+    if (!this.loader) return;
+
+    // Ensure loader is visible before animation starts
+    document.body.classList.remove('is-loading');
+    this.loader.style.opacity = '1';
+    this.loader.classList.remove('is-hidden');
+
+    // Set up countdown variables
+    const totalDuration = 3.0; // seconds for full loader animation
+    // Initialize displayed number
+    if (this.loaderNumber) this.loaderNumber.textContent = '1';
+    const countObj = { value: 1 };
+
+    // Start GSAP timeline with a brief initial pause to ensure the "1" is visible
     const tl = gsap.timeline({
+      onUpdate: () => {
+        if (this.loaderNumber) {
+          this.loaderNumber.textContent = Math.round(countObj.value).toString();
+        }
+      },
       onComplete: () => {
-        clearInterval(countInterval);
         this.onLoaderComplete();
       }
     });
 
-    // Film leader countdown 8 → 1 synced to timeline duration
-    let count = 8;
-    const totalDuration = 2.4;
-    const countInterval = setInterval(() => {
-      count--;
-      if (count >= 1 && this.loaderNumber) {
-        this.loaderNumber.textContent = String(count);
-      }
-    }, (totalDuration / 8) * 1000);
+    // Initial short pause (0.2s) before counting begins
+    tl.to({}, { duration: 0.2 });
 
-    // Progress bar
-    tl.to(this.loaderProgress, {
-      width: '100%',
-      duration: totalDuration,
-      ease: 'none'
-    });
+    // Animate the number from 1 to 100 over the total duration
+    tl.to(countObj, { value: 100, duration: totalDuration, ease: 'none' });
+
+    // Progress bar animation (synchronised with number)
+    tl.to(this.loaderProgress, { width: '100%', duration: totalDuration, ease: 'none' }, 0);
 
     // Show "FEATURE PRESENTATION" text
-    tl.to(this.loaderText, {
-      opacity: 1,
-      duration: 0.3
-    }, '-=0.5');
+    tl.to(this.loaderText, { opacity: 1, duration: 0.3 }, '-=0.5');
 
     // Hold for a beat
     tl.to({}, { duration: 0.5 });
@@ -72,7 +79,6 @@ class App {
       duration: 0.6,
       ease: 'power2.inOut',
       onComplete: () => {
-        clearInterval(countInterval);
         this.loader?.classList.add('is-hidden');
       }
     });
@@ -94,9 +100,10 @@ class App {
 
   private initSmoothScroll() {
     this.lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.8,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true
+      smoothWheel: true,
+      smoothTouch: true
     });
 
     this.lenis.on('scroll', ScrollTrigger.update);
@@ -134,7 +141,7 @@ class App {
         },
         y: 20,
         opacity: 0,
-        duration: 0.8,
+        duration: 1.0,
         ease: 'power3.out'
       });
     });
@@ -229,8 +236,8 @@ class App {
         y: 60,
         opacity: 0,
         duration: 0.8,
-        delay: (i % 2) * 0.15,
-        ease: 'power3.out'
+        delay: i * 0.1,
+        ease: 'power4.out'
       });
     });
 
@@ -244,24 +251,8 @@ class App {
         },
         x: -30,
         opacity: 0,
-        duration: 0.6,
-        delay: i * 0.1,
-        ease: 'power3.out'
-      });
-    });
-
-    // BTS items
-    gsap.utils.toArray('.bts__item').forEach((item, i) => {
-      gsap.from(item as HTMLElement, {
-        scrollTrigger: {
-          trigger: item as HTMLElement,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
-        },
-        y: 40,
-        opacity: 0,
         duration: 0.8,
-        delay: i * 0.15,
+        delay: i * 0.1,
         ease: 'power3.out'
       });
     });
@@ -276,13 +267,11 @@ class App {
         },
         scale: 0.8,
         opacity: 0,
-        duration: 0.5,
+        duration: 0.7,
         delay: i * 0.05,
         ease: 'power3.out'
       });
     });
-
-    // BTS slider items — handled by CSS animation
   }
 
   private initParallax() {
@@ -353,7 +342,18 @@ class App {
   }
 
   private initCursor() {
-    const cursor = document.getElementById('cursor');
+    let cursor = document.getElementById('cursor');
+    // Inject cursor markup if missing
+    if (!cursor) {
+      const cursorHTML = `
+        <div class="cursor" id="cursor">
+          <div class="cursor__dot"></div>
+          <div class="cursor__ring"></div>
+          <div class="cursor__label">VIEW</div>
+        </div>`;
+      document.body.insertAdjacentHTML('beforeend', cursorHTML);
+      cursor = document.getElementById('cursor');
+    }
     if (!cursor || window.innerWidth < 768) return;
 
     // Hide cursor until first mouse move
@@ -370,7 +370,7 @@ class App {
       mouseY = e.clientY;
       if (!hasMoved) {
         hasMoved = true;
-        cursor.style.opacity = '';
+        cursor!.style.opacity = '';
       }
     });
 
@@ -378,7 +378,7 @@ class App {
       cursorX += (mouseX - cursorX) * 0.15;
       cursorY += (mouseY - cursorY) * 0.15;
 
-      cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+      cursor!.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
       this.cursorRafId = requestAnimationFrame(animate);
     };
     animate();
@@ -390,25 +390,25 @@ class App {
         el.addEventListener('mouseenter', () => {
           const cursorType = el.getAttribute('data-cursor');
           if (cursorType === 'PLAY') {
-            cursor.classList.add('is-play');
-            cursor.classList.remove('is-hovering');
-            const label = cursor.querySelector('.cursor__label');
+            cursor!.classList.add('is-play');
+            cursor!.classList.remove('is-hovering');
+            const label = cursor!.querySelector('.cursor__label');
             if (label) label.textContent = 'PLAY';
           } else if (cursorType === 'OPEN') {
-            cursor.classList.add('is-hovering');
-            cursor.classList.remove('is-play');
-            const label = cursor.querySelector('.cursor__label');
+            cursor!.classList.add('is-hovering');
+            cursor!.classList.remove('is-play');
+            const label = cursor!.querySelector('.cursor__label');
             if (label) label.textContent = 'OPEN';
           } else {
-            cursor.classList.add('is-hovering');
-            cursor.classList.remove('is-play');
-            const label = cursor.querySelector('.cursor__label');
+            cursor!.classList.add('is-hovering');
+            cursor!.classList.remove('is-play');
+            const label = cursor!.querySelector('.cursor__label');
             if (label) label.textContent = 'VIEW';
           }
         });
 
         el.addEventListener('mouseleave', () => {
-          cursor.classList.remove('is-hovering', 'is-play');
+          cursor!.classList.remove('is-hovering', 'is-play');
         });
       });
     };
@@ -448,55 +448,68 @@ class App {
 
   private initBtsSlider() {
     const track = document.getElementById('btsTrack');
+    const viewport = document.getElementById('btsViewport');
     const prevBtn = document.getElementById('btsPrev');
     const nextBtn = document.getElementById('btsNext');
     const dotsContainer = document.getElementById('btsDots');
-    if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+    if (!track || !viewport || !prevBtn || !nextBtn || !dotsContainer) return;
 
+    const slides = track.querySelectorAll('.bts__slide');
+    const totalSlides = slides.length;
+    let currentSlide = 0;
+    let isAnimating = false;
+
+    // Generate dots dynamically
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('button');
+      dot.className = `bts__dot${i === 0 ? ' is-active' : ''}`;
+      dot.setAttribute('data-index', String(i));
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
     const dots = dotsContainer.querySelectorAll('.bts__dot');
-    const totalPages = dots.length;
-    let currentPage = 0;
 
     const updateDots = () => {
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('is-active', i === currentPage);
-      });
+      dots.forEach((dot, i) => dot.classList.toggle('is-active', i === currentSlide));
     };
 
-    const scrollToPage = (page: number) => {
-      const scrollAmount = track.clientWidth / 3;
-      track.scrollTo({ left: scrollAmount * page * 3, behavior: 'smooth' });
-      currentPage = page;
-      updateDots();
+    const goToSlide = (index: number) => {
+      if (index < 0 || index >= totalSlides || index === currentSlide || isAnimating) return;
+      isAnimating = true;
+      const viewportWidth = viewport.clientWidth;
+      const targetX = -index * viewportWidth;
+      gsap.to(track, {
+        x: targetX,
+        duration: 0.8,
+        ease: 'power3.inOut',
+        onComplete: () => {
+          currentSlide = index;
+          updateDots();
+          isAnimating = false;
+        }
+      });
     };
 
     nextBtn.addEventListener('click', () => {
-      if (currentPage < totalPages - 1) {
-        scrollToPage(currentPage + 1);
-      }
+      if (currentSlide < totalSlides - 1) goToSlide(currentSlide + 1);
     });
-
     prevBtn.addEventListener('click', () => {
-      if (currentPage > 0) {
-        scrollToPage(currentPage - 1);
-      }
+      if (currentSlide > 0) goToSlide(currentSlide - 1);
     });
 
-    dots.forEach((dot) => {
-      dot.addEventListener('click', () => {
-        const index = parseInt(dot.getAttribute('data-index') || '0');
-        scrollToPage(index);
-      });
+    // Handle resize — snap to current position without animation
+    let resizeTimeout: ReturnType<typeof setTimeout>;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        gsap.set(track, { x: -currentSlide * viewport.clientWidth });
+      }, 100);
     });
 
-    track.addEventListener('scroll', () => {
-      const scrollAmount = track.clientWidth / 3;
-      const page = Math.round(track.scrollLeft / (scrollAmount * 3));
-      if (page !== currentPage && page >= 0 && page < totalPages) {
-        currentPage = page;
-        updateDots();
-      }
-    });
+    // Ensure initial transform state
+    gsap.set(track, { x: 0 });
   }
 
   private initPageTransitions() {
@@ -519,9 +532,14 @@ class App {
         e.preventDefault();
         cancelAnimationFrame(this.cursorRafId);
         document.body.classList.add('is-leaving');
-        setTimeout(() => {
-          window.location.href = href;
-        }, 400);
+        gsap.to(document.body, {
+          opacity: 0,
+          duration: 0.4,
+          ease: 'power2.out',
+          onComplete: () => {
+            window.location.href = href;
+          }
+        });
       });
     });
   }
