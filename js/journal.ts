@@ -1,3 +1,5 @@
+import './main';
+
 // Journal filter functionality
 document.addEventListener('DOMContentLoaded', () => {
   const filterButtons = document.querySelectorAll('.tag[data-filter]');

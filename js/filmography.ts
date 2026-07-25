@@ -1,3 +1,5 @@
+import './main';
+
 // Filmography filter + video lightbox
 document.addEventListener('DOMContentLoaded', () => {
   const filterButtons = document.querySelectorAll('.tag[data-filter]');

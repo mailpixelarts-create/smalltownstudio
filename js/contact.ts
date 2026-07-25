@@ -1,3 +1,5 @@
+import './main';
+
 // Contact form functionality
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contactForm') as HTMLFormElement;

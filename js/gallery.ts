@@ -1,3 +1,5 @@
+import './main';
+
 // Gallery lightbox functionality
 document.addEventListener('DOMContentLoaded', () => {
   const lightbox = document.getElementById('lightbox');
