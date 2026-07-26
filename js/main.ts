@@ -792,8 +792,14 @@ class App {
       lightboxClose.addEventListener('click', closeLightbox);
     }
 
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
+    // Close lightbox when clicking the backdrop
+    lightbox.addEventListener('click', () => {
+      closeLightbox();
+    });
+
+    // Prevent lightbox close when clicking inside the video player
+    lightboxPlayer.addEventListener('click', (e) => {
+      e.stopPropagation();
     });
 
     document.addEventListener('keydown', (e) => {
