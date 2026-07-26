@@ -126,6 +126,7 @@ ul, ol {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 60px;
 }
 
 .loader__number {
@@ -141,13 +142,17 @@ ul, ol {
 }
 
 .loader__sprocket-holes {
-  position: absolute;
-  left: -80px;
-  top: 50%;
-  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
+}
+
+.loader__sprocket-holes--left {
+  order: -1;
+}
+
+.loader__sprocket-holes--right {
+  order: 1;
 }
 
 .loader__sprocket-holes span {
@@ -155,7 +160,7 @@ ul, ol {
   height: 12px;
   border: 1px solid var(--color-white);
   border-radius: 2px;
-  opacity: 0.3;
+  opacity: 0.25;
 }
 
 .loader__text {
@@ -458,6 +463,7 @@ ul, ol {
   z-index: 2;
   padding: 0 var(--gutter) var(--space-2xl);
   width: 100%;
+  opacity: 0;
 }
 
 .hero__title {
@@ -585,12 +591,13 @@ ul, ol {
 
 .showreel__overlay-body {
   font-family: var(--font-body);
-  font-size: clamp(0.85rem, 0.8rem + 0.3vw, 1rem);
+  font-size: clamp(0.9rem, 0.85rem + 0.3vw, 1.05rem);
   font-weight: 300;
-  line-height: 1.7;
+  line-height: 1.9;
   max-width: 600px;
   margin-bottom: 1rem;
   opacity: 0.85;
+  letter-spacing: 0.01em;
 }
 
 .showreel__overlay-body:last-child {
@@ -909,8 +916,7 @@ ul, ol {
   overflow: hidden;
   background: var(--color-black-medium);
   position: relative;
-  will-change: transform;
-  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .bts__item img {
@@ -919,12 +925,13 @@ ul, ol {
   object-fit: cover;
   filter: grayscale(40%) brightness(0.9);
   transition: filter 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform, filter;
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+  transform-origin: center center;
 }
 
 .bts__item:hover img {
-  transform: scale(1.08);
+  transform: scale(1.08) translateZ(0);
   filter: grayscale(0%) brightness(1);
 }
 
@@ -1250,4 +1257,95 @@ ul, ol {
   main p {
     text-align: center !important;
   }
+}
+
+/* ============================================
+   FEATURE 1 & 2: AJAX TRANSITION OVERLAY
+   ============================================ */
+
+.ajax-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.ajax-transition__bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: var(--color-black);
+  will-change: transform;
+}
+
+.ajax-transition__bar--top {
+  top: 0;
+  transform: translateY(-100%);
+}
+
+.ajax-transition__bar--bottom {
+  bottom: 0;
+  transform: translateY(100%);
+}
+
+.ajax-morph {
+  will-change: transform, top, left, width, height;
+}
+
+/* ============================================
+   FEATURE 3: CUSTOM SCROLLBAR
+   ============================================ */
+
+.custom-scrollbar {
+  position: fixed;
+  right: 8px;
+  top: 0;
+  width: 3px;
+  height: 100vh;
+  z-index: 9998;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.custom-scrollbar__thumb {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  background: var(--color-gold);
+  border-radius: 2px;
+  opacity: 0.4;
+  transition: opacity 0.3s ease, height 0.2s ease;
+  will-change: transform, top;
+}
+
+.custom-scrollbar:hover .custom-scrollbar__thumb {
+  opacity: 0.8;
+}
+
+/* Hide default scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(184, 147, 75, 0.3) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(184, 147, 75, 0.3);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(184, 147, 75, 0.6);
 }

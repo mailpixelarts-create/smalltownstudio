@@ -21,6 +21,9 @@ class App {
     this.loaderText = this.loader?.querySelector('.loader__text') ?? null;
     this.loaderBar = this.loader?.querySelector('.loader__bar') ?? null;
 
+    // Initialize current page URL tracking immediately
+    this.currentPageUrl = window.location.pathname;
+
     this.init();
   }
 
@@ -96,6 +99,8 @@ class App {
     this.initBtsSlider();
     this.initPageTransitions();
     this.initVideoLightbox();
+    this.initParallaxHover();
+    this.initScrollbarTrack();
   }
 
   private initSmoothScroll() {
@@ -121,6 +126,8 @@ class App {
   private initSplitText() {
     const splitElements = document.querySelectorAll('[data-split]');
     splitElements.forEach((el) => {
+      // Skip hero title — it has nested spans that SplitType would duplicate
+      if (el.closest('.hero')) return;
       const type = el.getAttribute('data-split');
       if (type === 'chars' || type === 'lines' || type === 'words') {
         new SplitType(el as HTMLElement, {
@@ -152,6 +159,11 @@ class App {
       const chars = el.querySelectorAll('.char');
       if (!isHero && chars.length === 0) return;
       if (isHero) {
+        // Hero content container — reveal before title animates
+        const heroContent = el.closest('.hero__content') as HTMLElement;
+        if (heroContent) {
+          gsap.set(heroContent, { opacity: 1, delay: 0.2 });
+        }
         // Hero title — animate lines from below with clip reveal
         const lines = el.querySelectorAll('.hero__title-line');
         if (lines.length > 0) {
@@ -163,10 +175,7 @@ class App {
               duration: 1.2,
               stagger: 0.15,
               ease: 'power3.out',
-              delay: 0.3,
-              onComplete: () => {
-                document.body.classList.remove('is-loading');
-              }
+              delay: 0.3
             }
           );
         } else {
@@ -178,11 +187,23 @@ class App {
               opacity: 1,
               duration: 1,
               ease: 'power3.out',
-              delay: 0.3,
-              onComplete: () => {
-                document.body.classList.remove('is-loading');
-              }
+              delay: 0.3
             }
+          );
+        }
+        // Staggered reveal for subtitle and scroll indicator
+        const subtitle = heroContent?.querySelector('.hero__subtitle');
+        const scrollIndicator = heroContent?.querySelector('.hero__scroll-indicator');
+        if (subtitle) {
+          gsap.fromTo(subtitle,
+            { y: 20, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 0.6 }
+          );
+        }
+        if (scrollIndicator) {
+          gsap.fromTo(scrollIndicator,
+            { y: 15, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 0.8 }
           );
         }
       } else {
@@ -521,25 +542,221 @@ class App {
       });
     }
 
-    // Fade-out on internal link click (skip menu links — they have their own handler)
-    document.querySelectorAll('a[href]').forEach((link) => {
+    // --- AJAX PAGE NAVIGATION (replaces full page reload) ---
+    this.initAjaxNavigation();
+  }
+
+  // ============================================
+  // FEATURE 1 & 2: AJAX NAVIGATION + PAGE TRANSITIONS
+  // ============================================
+
+  private isAjaxNavigating = false;
+  private currentPageUrl = ''; // Track the current AJAX page URL
+
+  private initAjaxNavigation() {
+
+    // Use event delegation on document to avoid memory leaks
+    document.addEventListener('click', (e) => {
+      const link = (e.target as HTMLElement).closest('a[href]') as HTMLAnchorElement;
+      if (!link) return;
+
       const href = link.getAttribute('href');
       if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('http')) return;
+      // Skip menu links — they already close the menu first
       if (link.closest('.menu')) return;
+      // Skip video lightbox triggers
+      if (link.closest('.film-card[data-vimeo]')) return;
+      // Skip if already navigating
+      if (this.isAjaxNavigating) return;
 
-      link.addEventListener('click', (e) => {
-        if (document.body.classList.contains('is-leaving')) return;
-        e.preventDefault();
-        cancelAnimationFrame(this.cursorRafId);
-        document.body.classList.add('is-leaving');
-        gsap.to(document.body, {
-          opacity: 0,
-          duration: 0.4,
-          ease: 'power2.out',
-          onComplete: () => {
-            window.location.href = href;
-          }
+      e.preventDefault();
+      this.navigateTo(href, link);
+    });
+
+    // Handle browser back/forward
+    window.addEventListener('popstate', (e) => {
+      if (this.isAjaxNavigating) return;
+
+      const newUrl = window.location.pathname;
+      // Only navigate if the URL actually changed
+      if (newUrl !== this.currentPageUrl) {
+        this.navigateTo(newUrl, null, true);
+      }
+    });
+  }
+
+  private async navigateTo(url: string, clickedEl: HTMLElement | null, isPopState = false) {
+    if (this.isAjaxNavigating) return;
+    // Don't navigate to the same page
+    if (url === this.currentPageUrl && !isPopState) return;
+
+    this.isAjaxNavigating = true;
+
+    // Stop Lenis during transition
+    this.lenis?.stop();
+    cancelAnimationFrame(this.cursorRafId);
+
+    // 1. Create transition overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'ajax-transition';
+    overlay.innerHTML = '<div class="ajax-transition__bar ajax-transition__bar--top"></div><div class="ajax-transition__bar ajax-transition__bar--bottom"></div>';
+    document.body.appendChild(overlay);
+
+    // 2. Create morph clone from clicked element (feature 2)
+    let morphClone: HTMLElement | null = null;
+    if (clickedEl) {
+      const img = clickedEl.querySelector('img') || clickedEl.closest('.hero__video-wrap') || clickedEl.closest('.hero');
+      if (img) {
+        morphClone = document.createElement('div');
+        morphClone.className = 'ajax-morph';
+        const rect = img.getBoundingClientRect();
+        // Only create morph if element is visible on screen
+        if (rect.width > 0 && rect.height > 0) {
+          Object.assign(morphClone.style, {
+            position: 'fixed',
+            top: rect.top + 'px',
+            left: rect.left + 'px',
+            width: rect.width + 'px',
+            height: rect.height + 'px',
+            backgroundImage: window.getComputedStyle(img).backgroundImage || `url(${(img as HTMLImageElement).src || ''})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            zIndex: '10000',
+            borderRadius: '0',
+            overflow: 'hidden'
+          });
+          document.body.appendChild(morphClone);
+        }
+      }
+    }
+
+    // 3. Animate transition bars in
+    await new Promise<void>((resolve) => {
+      const tl = gsap.timeline({ onComplete: () => resolve() });
+      tl.to(overlay.querySelector('.ajax-transition__bar--top'), {
+        y: '0%', duration: 0.5, ease: 'power3.inOut'
+      }, 0);
+      tl.to(overlay.querySelector('.ajax-transition__bar--bottom'), {
+        y: '0%', duration: 0.5, ease: 'power3.inOut'
+      }, 0);
+      // Fade out current content
+      tl.to('#main', {
+        opacity: 0, y: -30, duration: 0.3, ease: 'power2.in'
+      }, 0);
+      // Morph the clone to fill screen
+      if (morphClone) {
+        tl.to(morphClone, {
+          top: 0, left: 0, width: '100vw', height: '100vh',
+          duration: 0.5, ease: 'power3.inOut'
+        }, 0);
+      }
+    });
+
+    // 4. Fetch new page content
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const html = await response.text();
+
+      // Parse the response HTML
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+
+      // Extract new main content
+      const newMain = doc.querySelector('#main');
+      const newTitle = doc.querySelector('title')?.textContent || document.title;
+
+      if (!newMain) {
+        // Fallback: full navigation if structure doesn't match
+        window.location.href = url;
+        return;
+      }
+
+      // Update URL and track current page
+      if (!isPopState) {
+        history.pushState({ ajaxPage: true }, newTitle, url);
+      }
+      this.currentPageUrl = url;
+
+      // Update title
+      document.title = newTitle;
+
+      // 5. Replace main content
+      const mainEl = document.getElementById('main');
+      if (mainEl) {
+        mainEl.innerHTML = newMain.innerHTML;
+      }
+
+      // 6. Remove morph clone
+      if (morphClone) {
+        gsap.to(morphClone, {
+          opacity: 0, duration: 0.3, delay: 0.2,
+          onComplete: () => morphClone?.remove()
         });
+      }
+
+      // 7. Animate transition bars out
+      await new Promise<void>((resolve) => {
+        const tl = gsap.timeline({ onComplete: () => resolve() });
+        tl.to(overlay.querySelector('.ajax-transition__bar--top'), {
+          y: '-100%', duration: 0.5, ease: 'power3.inOut', delay: 0.1
+        }, 0);
+        tl.to(overlay.querySelector('.ajax-transition__bar--bottom'), {
+          y: '100%', duration: 0.5, ease: 'power3.inOut', delay: 0.1
+        }, 0);
+      });
+
+      // Clean up overlay
+      overlay.remove();
+
+      // 8. Re-initialize everything on new page
+      ScrollTrigger.getAll().forEach(t => t.kill());
+      this.reinitializePage();
+
+    } catch (err) {
+      console.error('AJAX navigation failed:', err);
+      // Clean up overlay on error
+      overlay?.remove();
+      morphClone?.remove();
+      this.isAjaxNavigating = false;
+      this.lenis?.start();
+      // Update currentPageUrl before fallback
+      this.currentPageUrl = url;
+      // Fallback to full page load
+      window.location.href = url;
+    }
+  }
+
+  private reinitializePage() {
+    // Scroll to top
+    window.scrollTo(0, 0);
+
+    // Re-init Lenis
+    this.lenis?.start();
+    this.lenis?.scrollTo(0, { immediate: true });
+
+    // Re-init all page features
+    this.initSplitText();
+    this.initRevealAnimations();
+    this.initParallax();
+    this.initNav();
+    this.initCursor();
+    this.initShowreel();
+    this.initBtsSlider();
+    this.initVideoLightbox();
+    this.initParallaxHover();
+
+    // Reset navigation state
+    this.isAjaxNavigating = false;
+
+    // Fade in new content
+    requestAnimationFrame(() => {
+      document.body.classList.remove('is-leaving');
+      gsap.fromTo('#main', { opacity: 0, y: 20 }, {
+        opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
+        onComplete: () => {
+          ScrollTrigger.refresh();
+        }
       });
     });
   }
@@ -583,6 +800,88 @@ class App {
       if (e.key === 'Escape') closeLightbox();
     });
   }
+
+  // ============================================
+  // FEATURE 3: CUSTOM SCROLLBAR TRACK
+  // ============================================
+
+  private initScrollbarTrack() {
+    // Only on desktop
+    if (window.innerWidth < 768) return;
+
+    // Create scrollbar track element
+    const track = document.createElement('div');
+    track.className = 'custom-scrollbar';
+    track.innerHTML = '<div class="custom-scrollbar__thumb"></div>';
+    document.body.appendChild(track);
+
+    const thumb = track.querySelector('.custom-scrollbar__thumb') as HTMLElement;
+    if (!thumb) return;
+
+    const updateThumb = () => {
+      const docHeight = document.documentElement.scrollHeight;
+      const viewHeight = window.innerHeight;
+      if (docHeight <= viewHeight) {
+        track.style.opacity = '0';
+        return;
+      }
+      track.style.opacity = '';
+      const ratio = viewHeight / docHeight;
+      const thumbHeight = Math.max(40, ratio * viewHeight);
+      thumb.style.height = thumbHeight + 'px';
+
+      // Calculate scroll position
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      const maxScroll = docHeight - viewHeight;
+      const scrollRatio = maxScroll > 0 ? scrollY / maxScroll : 0;
+      const maxThumbTop = viewHeight - thumbHeight;
+      thumb.style.top = (scrollRatio * maxThumbTop) + 'px';
+    };
+
+    // Update on scroll
+    const onScroll = () => requestAnimationFrame(updateThumb);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => requestAnimationFrame(updateThumb));
+    updateThumb();
+  }
+
+  // ============================================
+  // FEATURE 5: PARALLAX HOVER ON FILM CARDS
+  // ============================================
+
+  private initParallaxHover() {
+    if (window.innerWidth < 768) return;
+
+    const cards = document.querySelectorAll('.film-card');
+    cards.forEach((card) => {
+      const img = card.querySelector('.film-card__image');
+      if (!img) return;
+
+      card.addEventListener('mousemove', (e: MouseEvent) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+        gsap.to(img, {
+          x: x * 15,
+          y: y * 15,
+          rotateY: x * 5,
+          rotateX: -y * 5,
+          duration: 0.4,
+          ease: 'power2.out'
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        gsap.to(img, {
+          x: 0, y: 0, rotateY: 0, rotateX: 0,
+          duration: 0.6, ease: 'power3.out'
+        });
+      });
+    });
+  }
+
+
 }
 
 // Initialize
