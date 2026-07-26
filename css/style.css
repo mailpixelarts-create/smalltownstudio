@@ -496,6 +496,7 @@ ul, ol {
   display: flex;
   align-items: center;
   gap: var(--space-md);
+  animation: scrollIndicatorPulse 2.5s ease-in-out infinite;
 }
 
 .hero__scroll-text {
@@ -512,6 +513,7 @@ ul, ol {
   background: var(--color-gold);
   transform-origin: left;
   animation: scrollLine 2s var(--ease-in-out-expo) infinite;
+  box-shadow: 0 0 6px rgba(184, 147, 75, 0.4);
 }
 
 @keyframes scrollLine {
@@ -519,6 +521,11 @@ ul, ol {
   50% { transform: scaleX(1); transform-origin: left; }
   51% { transform: scaleX(1); transform-origin: right; }
   100% { transform: scaleX(0); transform-origin: right; }
+}
+
+@keyframes scrollIndicatorPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
 /* ============================================
