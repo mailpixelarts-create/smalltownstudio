@@ -1,0 +1,35 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/pages/about", "destination": "/pages/about.html" },
+    { "source": "/pages/about/", "destination": "/pages/about.html" },
+    { "source": "/pages/filmography", "destination": "/pages/filmography.html" },
+    { "source": "/pages/filmography/", "destination": "/pages/filmography.html" },
+    { "source": "/pages/film", "destination": "/pages/film.html" },
+    { "source": "/pages/film/", "destination": "/pages/film.html" },
+    { "source": "/pages/journal", "destination": "/pages/journal.html" },
+    { "source": "/pages/journal/", "destination": "/pages/journal.html" },
+    { "source": "/pages/contact", "destination": "/pages/contact.html" },
+    { "source": "/pages/contact/", "destination": "/pages/contact.html" },
+    { "source": "/pages/(.*)", "destination": "/pages/404.html" },
+    { "source": "/(.*)", "destination": "/pages/404.html" }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ]
+}
