@@ -293,6 +293,23 @@ class App {
         ease: 'power3.out'
       });
     });
+
+    // Why page stats
+    gsap.utils.toArray('.about-why__feature, .about-why__stat').forEach((item, i) => {
+      gsap.from(item as HTMLElement, {
+        scrollTrigger: {
+          trigger: '.about-why__grid',
+          start: 'top 82%',
+          toggleActions: 'play none none none'
+        },
+        y: 36,
+        rotateX: 4,
+        opacity: 0,
+        duration: 0.8,
+        delay: i * 0.08,
+        ease: 'power3.out'
+      });
+    });
   }
 
   private initParallax() {

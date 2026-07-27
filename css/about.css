@@ -1,5 +1,5 @@
 /* ============================================
-   ABOUT PAGE — Small Town Studio
+   ABOUT PAGE - Small Town Studio
    ============================================ */
 
 /* Hero Quote */
@@ -56,11 +56,16 @@
 /* Studio Intro */
 .about-intro {
   padding: var(--space-2xl) var(--gutter);
-  text-align: center;
 }
 
 .about-intro__content {
-  max-width: 800px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-intro__copy {
+  max-width: 820px;
   margin: 0 auto;
 }
 
@@ -70,6 +75,15 @@
   font-weight: 300;
   line-height: 1.1;
   margin: var(--space-md) 0 var(--space-lg);
+}
+
+.about-intro__lead {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 300;
+  line-height: 1.45;
+  color: var(--color-white);
+  margin-bottom: var(--space-lg);
 }
 
 .about-intro__paragraph {
@@ -159,7 +173,7 @@
   line-height: 1.7;
 }
 
-/* What We Do — Services */
+/* What We Do - Services */
 .about-services {
   padding: var(--space-2xl) var(--gutter);
   max-width: var(--max-width);
@@ -179,14 +193,17 @@
 }
 
 .about-services__grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-lg);
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 980px;
+  margin: var(--space-xl) auto 0;
 }
 
 .about-services__item {
-  flex: 0 0 calc((100% - 2 * var(--space-lg)) / 3);
+  display: grid;
+  grid-template-columns: minmax(220px, 0.38fr) minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--space-xl);
   padding: var(--space-lg) 0;
   border-top: 1px solid var(--border-color);
   transition: border-color 0.4s ease;
@@ -204,7 +221,7 @@
   margin-bottom: var(--space-sm);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  text-align: center;
+  text-align: left;
 }
 
 .about-services__desc {
@@ -229,6 +246,17 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-lg);
+  perspective: 1200px;
+}
+
+.about-why__feature,
+.about-why__stat {
+  position: relative;
+  min-height: 220px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  isolation: isolate;
+  transition: transform 0.5s var(--ease-out-expo), border-color 0.4s ease, background-color 0.4s ease;
 }
 
 .about-why__feature {
@@ -238,6 +266,52 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.about-why__feature::before,
+.about-why__stat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at 50% 0%, rgba(184, 147, 75, 0.18), transparent 55%);
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s var(--ease-out-expo);
+}
+
+.about-why__feature::after,
+.about-why__stat::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 12%;
+  width: 76%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  opacity: 0.55;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.6s var(--ease-out-expo), opacity 0.4s ease;
+}
+
+.about-why__feature:hover,
+.about-why__stat:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-gold-dim);
+  background-color: rgba(184, 147, 75, 0.04);
+}
+
+.about-why__feature:hover::before,
+.about-why__stat:hover::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-why__feature:hover::after,
+.about-why__stat:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 .about-why__feature-title {
@@ -263,6 +337,7 @@
   align-items: center;
 }
 
+
 .about-why__number {
   font-family: var(--font-display);
   font-size: var(--text-display);
@@ -270,6 +345,12 @@
   color: var(--color-gold);
   line-height: 1;
   margin-bottom: var(--space-sm);
+  transition: transform 0.5s var(--ease-out-expo), text-shadow 0.5s ease;
+}
+
+.about-why__stat:hover .about-why__number {
+  transform: translateY(-4px) scale(1.04);
+  text-shadow: 0 0 24px rgba(184, 147, 75, 0.32);
 }
 
 .about-why__label {
@@ -302,15 +383,9 @@
    RESPONSIVE
    ============================================ */
 @media (max-width: 1024px) {
-  .about-services__grid {
-    flex-direction: column;
-    align-items: center;
-  }
-
   .about-services__item {
-    flex: none;
-    width: 100%;
-    max-width: 600px;
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
   }
 
   .about-why__grid {
