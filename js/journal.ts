@@ -22,4 +22,23 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+  // YouTube click-to-load functionality
+  const videoContainers = document.querySelectorAll('.journal-card__video[data-video-id]');
+  
+  videoContainers.forEach((container) => {
+    container.addEventListener('click', () => {
+      const videoId = container.getAttribute('data-video-id');
+      if (!videoId) return;
+
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.allowFullscreen = true;
+      
+      container.classList.add('is-playing');
+      container.appendChild(iframe);
+    });
+  });
 });

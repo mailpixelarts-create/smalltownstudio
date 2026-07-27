@@ -117,7 +117,7 @@ class App {
       this.lenis?.raf(time * 1000);
     });
 
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(500, 33);
 
     // Ensure ScrollTrigger recalculates after Lenis measures the page
     requestAnimationFrame(() => ScrollTrigger.refresh());
@@ -344,6 +344,28 @@ class App {
         ease: 'none'
       });
     }
+
+    // Count-up animation for Why section numbers
+    gsap.utils.toArray('.about-why__number[data-target]').forEach((el) => {
+      const target = parseInt(el.getAttribute('data-target'));
+      const suffix = el.getAttribute('data-suffix') || '';
+      
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        once: true,
+        onEnter: () => {
+          gsap.to({ val: 0 }, {
+            val: target,
+            duration: 2.5,
+            ease: 'power2.out',
+            onUpdate: function() {
+              el.textContent = Math.round(this.targets()[0].val) + suffix;
+            }
+          });
+        }
+      });
+    });
   }
 
   private initNav() {

@@ -38,6 +38,69 @@
   flex-direction: column;
 }
 
+.journal-card__video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--color-black-medium);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.journal-card__thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.journal-card:hover .journal-card__thumb {
+  transform: scale(1.05);
+}
+
+.journal-card__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.journal-card__play svg {
+  width: 24px;
+  height: 24px;
+  color: #000;
+  margin-left: 3px;
+}
+
+.journal-card:hover .journal-card__play {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: var(--color-gold);
+}
+
+.journal-card__video.is-playing .journal-card__thumb,
+.journal-card__video.is-playing .journal-card__play {
+  display: none;
+}
+
+.journal-card__video.is-playing iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .journal-card__image {
   aspect-ratio: 16 / 9;
   overflow: hidden;
