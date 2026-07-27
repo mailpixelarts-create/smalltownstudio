@@ -118,11 +118,47 @@
 }
 
 @media (max-width: 768px) {
+  .contact {
+    padding: 120px var(--gutter) var(--space-xl);
+  }
+
+  .contact__content {
+    gap: var(--space-xl);
+  }
+
   .contact__title {
     font-size: var(--text-3xl);
   }
 
+  .contact__text {
+    font-size: var(--text-base);
+  }
+
+  .contact__form-wrap {
+    padding: var(--space-lg);
+  }
+
   .contact__socials {
     flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .form__input,
+  .form__textarea {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 100px var(--gutter) var(--space-lg);
+  }
+
+  .contact__title {
+    font-size: var(--text-2xl);
+  }
+
+  .contact__form-wrap {
+    padding: var(--space-md);
   }
 }

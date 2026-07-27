@@ -1230,6 +1230,17 @@ ul, ol {
   a, button {
     cursor: pointer;
   }
+
+  /* Hamburger menu fix */
+  .nav__toggle {
+    width: 44px;
+    padding: 10px 0;
+    gap: 6px;
+  }
+
+  .nav__toggle-line {
+    height: 2px;
+  }
 }
 
 @media (max-width: 480px) {
